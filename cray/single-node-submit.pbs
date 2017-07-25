@@ -1,0 +1,15 @@
+#!/bin/bash --login
+#PBS -l nodes=1:ppn=44
+#PBS -l walltime=00:60:00
+#PBS -j oe
+
+# Is something like this neeeded?
+# module load craype-hugepages2M 
+
+# change to the directory from which the job was submitted
+cd $PBS_O_WORKDIR
+echo "pwd=$PWD"
+
+echo "Starting job"
+time aprun -n 44 ./alloc_test
+echo "Finished job"
